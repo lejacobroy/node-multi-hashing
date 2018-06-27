@@ -25,7 +25,7 @@ extern "C" {
     #include "quark.h"
     #include "qubit.h"
     #include "s3.h"
-    #include "scryptjane.h"
+    //#include "scryptjane.h"
     #include "scryptn.h"
     #include "sha1.h"
     #include "shavite3.h"
@@ -45,7 +45,7 @@ extern "C" {
     #include "yescrypt/sha256_Y.h"
 }
 
-#include "boolberry.h"
+//#include "boolberry.h"
 
 #define THROW_ERROR_EXCEPTION(x) Nan::ThrowError(x)
 #define THROW_ERROR_EXCEPTION_WITH_STATUS_CODE(x, y) NanThrowError(x, y)
@@ -150,7 +150,7 @@ NAN_METHOD(blake) {
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
-NAN_METHOD(boolberry) {
+/*NAN_METHOD(boolberry) {
 
     if (info.Length() < 2)
         return THROW_ERROR_EXCEPTION("You must provide two arguments.");
@@ -184,7 +184,7 @@ NAN_METHOD(boolberry) {
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
-
+*/
 NAN_METHOD(quark) {
 
     if (info.Length() < 1)
@@ -276,7 +276,7 @@ NAN_METHOD(scryptn) {
    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
-NAN_METHOD(scryptjane) {
+/*NAN_METHOD(scryptjane) {
 
     if (info.Length() < 5)
         return THROW_ERROR_EXCEPTION("You must provide two argument: buffer, timestamp as number, and nChainStarTime as number, nMin, and nMax");
@@ -306,7 +306,7 @@ NAN_METHOD(scryptjane) {
     scryptjane_hash(input, input_len, (uint32_t *)output, GetNfactorJane(timestamp, nChainStartTime, nMin, nMax));
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
-}
+}*/
 
 NAN_METHOD(keccak) {
 
@@ -647,7 +647,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("x11").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x11)).ToLocalChecked());
     Nan::Set(target, Nan::New("scrypt").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(scrypt)).ToLocalChecked());
     Nan::Set(target, Nan::New("scryptn").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(scryptn)).ToLocalChecked());
-    Nan::Set(target, Nan::New("scryptjane").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(scryptjane)).ToLocalChecked());
+   // Nan::Set(target, Nan::New("scryptjane").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(scryptjane)).ToLocalChecked());
     Nan::Set(target, Nan::New("keccak").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(keccak)).ToLocalChecked());
     Nan::Set(target, Nan::New("bcrypt").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(bcrypt)).ToLocalChecked());
     Nan::Set(target, Nan::New("skein").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(skein)).ToLocalChecked());
@@ -660,7 +660,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("shavite3").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(shavite3)).ToLocalChecked());
     Nan::Set(target, Nan::New("cryptonight").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(cryptonight)).ToLocalChecked());
     Nan::Set(target, Nan::New("x13").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x13)).ToLocalChecked());
-    Nan::Set(target, Nan::New("boolberry").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(boolberry)).ToLocalChecked());
+    //Nan::Set(target, Nan::New("boolberry").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(boolberry)).ToLocalChecked());
     Nan::Set(target, Nan::New("nist5").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(nist5)).ToLocalChecked());
     Nan::Set(target, Nan::New("sha1").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(sha1)).ToLocalChecked());
     Nan::Set(target, Nan::New("x15").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x15)).ToLocalChecked());
